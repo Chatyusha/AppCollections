@@ -31,7 +31,7 @@ def runCommand(arch,app,procs,num):
             f"ubuntu:{arch}",
             f"installers/{app}.sh",
             arch,
-            procs
+            str(procs)
         ]
         return docker_run
 

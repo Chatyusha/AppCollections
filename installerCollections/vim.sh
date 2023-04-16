@@ -1,7 +1,7 @@
 #!/bin/bash
 
 prefix="$(realpath $1)"
-procs=$2
+procs=$(nproc)
 
 git clone https://github.com/vim/vim.git
 cd vim/src
@@ -9,4 +9,6 @@ cd vim/src
 ./configure --prefix="$prefix/vim"
 make -j $procs
 make install
-zip -r "$prefix/vim.zip" "$prefix/vim"
+cd $prefix
+zip -r vim.zip vim
+rm -rf vim
