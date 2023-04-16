@@ -7,7 +7,7 @@ def buildImage(arch):
         "build",
         "-t",
         f"ubuntu:{arch}",
-        f"--platform=linux/{arch}64",
+        f"--platform=linux/{arch}",
         "."
     ]
     return docker_build
