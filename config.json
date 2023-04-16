@@ -1,0 +1,12 @@
+{
+    "withBuildImage" : false,
+    "archs":[
+        "amd64",
+        "arm64"
+    ],
+    "apps":[
+        {
+            "name":"vim"
+        }
+    ]
+}
