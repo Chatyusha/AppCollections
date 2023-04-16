@@ -12,7 +12,7 @@ def buildImage(arch):
     ]
     return docker_build
 
-def runCommand(arch,app,procs,num):
+def runCommand(arch,app,num):
         docker_run = [
             "docker",
             "run",
@@ -30,8 +30,7 @@ def runCommand(arch,app,procs,num):
             f"linux_{arch}_{num}",
             f"ubuntu:{arch}",
             f"installers/{app}.sh",
-            arch,
-            str(procs)
+            arch
         ]
         return docker_run
 
@@ -41,7 +40,6 @@ class Config(object):
         self.__withImageBuild = False
         self.__archs = []
         self.__apps = []
-        self.__procs : int = 2
     
     def setWithImageBuild(self,switch=False):
         self.__withImageBuild = switch
@@ -51,10 +49,7 @@ class Config(object):
 
     def setApps(self,apps):
         self.__apps = apps
-
-    def setProcs(self,procs):
-        self.__procs = procs
-
+    
     def getWithImageBuild(self):
         return self.__withImageBuild
     
@@ -63,9 +58,6 @@ class Config(object):
     
     def getApps(self):
         return self.__apps
-    
-    def getProcs(self):
-        return self.__procs
 
 if __name__ == "__main__":
     config = Config()
@@ -87,9 +79,8 @@ if __name__ == "__main__":
             pop.wait()
     
     num = 0
-    procs = config.getProcs()
     for app in config.getApps():
         for arch in config.getArchs():
             appName = app["name"]
-            subprocess.Popen(runCommand(arch,appName,procs,num),stdout=subprocess.DEVNULL)
+            subprocess.Popen(runCommand(arch,appName,num),stdout=subprocess.DEVNULL)
             num += 1
