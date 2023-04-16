@@ -73,8 +73,8 @@ if __name__ == "__main__":
     with open("config.json") as config_file:
         configData = json.loads(config_file.read())
         config.setWithImageBuild(configData["withImageBuild"])
-        config.setArchs(config["archs"])
-        config.setApps(config["apps"])
+        config.setArchs(configData["archs"])
+        config.setApps(configData["apps"])
 
 
     if config.getWithImageBuild():

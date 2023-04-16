@@ -1,5 +1,5 @@
 {
-    "withBuildImage" : false,
+    "withImageBuild" : false,
     "procs": 2,
     "archs":[
         "amd64",
