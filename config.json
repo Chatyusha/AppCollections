@@ -1,5 +1,6 @@
 {
     "withBuildImage" : false,
+    "procs": 2,
     "archs":[
         "amd64",
         "arm64"
@@ -7,6 +8,9 @@
     "apps":[
         {
             "name":"vim"
+        },
+        {
+            "name":"clang"
         }
     ]
 }
